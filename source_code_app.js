@@ -540,7 +540,7 @@ let getmessage = function (msg) {
     if (msg.d != '') {
         img.src = 'data:' + msg.format + ';base64,' + window.btoa(msg.d);
     } else {
-        img.src = "/a.png";
+        img.src = "./a.png";
     }
     if (!open || item.children.length == 1) {
         item.innerHTML = img.outerHTML + item.innerHTML;
