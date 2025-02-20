@@ -160,7 +160,23 @@ div:has(>.searsh){
     right: 0;
     top: 0;
 }
-
+#time{
+    font-size: 1vw;
+    color: white;
+    margin-inline:5px ;
+}
+[data-display="play"] > #pause{
+    display: none;
+}
+[data-display="pause"] > #playing{
+    display: none;
+}
+[data-display="volume"] > #muted{
+    display: none;
+}
+[data-display="muted"] > #volume{
+    display: none;
+}
 .soundImage {
     width: 100%;
     height: 100%;
@@ -206,7 +222,7 @@ div:has(>.searsh){
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(29, 29, 29, 0.7), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(48, 48, 48, 0.9), rgba(0, 0, 0, 0.9));
 }
 
 .navbar- {
@@ -311,15 +327,15 @@ ol>li:hover,ol>li:focus {
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(29, 29, 29, 0.7), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(48, 48, 48, 0.9), rgba(0, 0, 0, 0.9));
 }
 
 nav {
     display: block;
 }
 .controler {
-    width: 5vw;
-    height: 5vw;
+    width: 5vh;
+    height: 5vh;
     border: 0px;
     position: relative;
     background: transparent;
@@ -328,39 +344,40 @@ nav {
     -o-transition: .5s all;
     -moz-transition: .5s all;
     transition: .5s all;
-    margin: 0 10px;
 }
 
 .controler:hover,.controler:focus {
     border: 0px;
     position: relative;
-    background: radial-gradient( rgba(59, 59, 59, 0.7), rgba(0, 0, 0, 0.7));
+    background: radial-gradient( rgb(17, 17, 17), rgb(59, 59, 59));
     -o-transition: .5s all;
     -moz-transition: .5s all;
     transition: .5s all;
 }
 
-.controler>img {
+.controler>svg {
     position: absolute;
-    right: 1vw;
-    top: 1vw;
-    width: 3vw;
-    height: 3vw;
+    right: 1vh;
+    top: 1vh;
+    width: 3vh;
+    height: 3vh;
     border-radius: 0%;
     filter: none;
     -o-transition: .5s all;
     -moz-transition: .5s all;
     transition: .5s all;
-    opacity: .7;
+    opacity: .1;
+    filter: invert(1);
+    
 }
 
-.controler:hover>img,.controler:focus>img {
+.controler:hover>svg,.controler:focus>svg {
     position: absolute;
-    right: .5vw;
-    top: .5vw;
-    width: 4vw;
-    height: 4vw;
-    filter: invert(1);
+    right: .5vh;
+    top: .5vh;
+    width: 4vh;
+    height: 4vh;
+    opacity: .9;
     -o-transition: .5s all;
     -moz-transition: .5s all;
     transition: .5s all;
@@ -376,7 +393,7 @@ nav {
     -webkit-appearance: none;
     appearance: none;
     height: 3px;
-    margin: 0 10px;
+    margin: 0;
     border-radius: 5px;
     background: rgb(255, 255, 255);
     border-radius: 5px;

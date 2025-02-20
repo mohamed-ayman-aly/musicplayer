@@ -102,7 +102,7 @@ let audioextensions = [
     '.flx', '.jnr', '.vft', '.kux', '.grasp', '.dsy', '.rts', '.pmv', '.h262', '.cel', '.tgv', '.ml20', '.tgq', '.rpl',
     '.rl2', '.paf', '.mvi', '.pjr'
 ]
-let playpauseimg = document.getElementById("playpauseimg");
+let playpausebtn = document.getElementById("playpause");
 let restart = document.getElementById("restart");
 let output = document.getElementById("songes");
 let songe = document.getElementById("songe");
@@ -250,12 +250,12 @@ audio.onended = function () {
 };
 function playpause() {
     if (currentsongid != -1) {
-        let o = playpauseimg.src.substring(playpauseimg.src.lastIndexOf("/") + 1, playpauseimg.src.length)
-        if (o == "plyr-pause.svg") {
-            playpauseimg.src = "plyr-play.svg"
+        var o=playpausebtn.getAttribute("data-display");
+        if (o == "pause") {
+            playpausebtn.setAttribute("data-display","play");
             audio.pause();
         } else {
-            playpauseimg.src = "plyr-pause.svg";
+            playpausebtn.setAttribute("data-display","pause");
             audio.play();
             if (!w) { w = true; }
         }
@@ -326,7 +326,7 @@ let opensonge = function () {
         updatenavigator(Date.now(), this.children[0], this.innerText)
     }
 
-    playpauseimg.src = "plyr-pause.svg";
+    playpausebtn.setAttribute("data-display","pause");
     this.style.color = "white";
     this.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
     songeInterval = setInterval(sItraker, 100);
@@ -411,15 +411,15 @@ function imgSize(d) {
     return d.naturalWidth + "x" + d.naturalHeight
 }
 function volume() {
-    let o = volumemuted.src.substring(volumemuted.src.lastIndexOf("/") + 1, volumemuted.src.length);
-    if (o == "plyr-volume.svg") {
-        volumemuted.src = "plyr-muted.svg"
+    let o = volumemuted.getAttribute("data-display");
+    if (o == "volume") {
+        volumemuted.setAttribute("data-display","muted") 
         audio.muted = true;
         vol.style.backgroundSize = "0%" + " 100%";
         vol.value = 0;
         localStorage.setItem('oldvolume', vol.value);
     } else {
-        volumemuted.src = "plyr-volume.svg"
+        volumemuted.setAttribute("data-display","volume") 
         audio.muted = false;
         vol.style.backgroundSize = oldvolume + "%" + " 100%";
         vol.value = oldvolume;
@@ -430,10 +430,10 @@ function changevol() {
     audio.volume = vol.value / 100;
     vol.style.backgroundSize = vol.value + '%' + '100%';
     if (audio.volume == 0) {
-        volumemuted.src = 'plyr-muted.svg'
+        volumemuted.setAttribute("data-display","muted") 
         audio.muted = true;
     } else {
-        volumemuted.src = 'plyr-volume.svg'
+        volumemuted.setAttribute("data-display","volume") 
         audio.muted = false;
     }
     oldvolume = vol.value;
