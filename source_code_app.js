@@ -267,9 +267,9 @@ function playpause() {
 function repeatfunc() {
     repeat = (!repeat);
     if (repeat)
-        restart.style.filter = " brightness(0) invert(1)";
+        restart.style.opacity= 1;
     else
-        restart.style.filter = "none";
+        restart.style.opacity= .1;
 }
 function handleMouseMove(event) {
     var eventDoc, doc, body, pageX, pageY;
